@@ -1,0 +1,12 @@
+.server-crashes-cache/
+cache/
+modules/
+node_modules/
+altv-crash-handler
+AltV.Net.Host.dll
+AltV.Net.Host.runtimeconfig.json
+server.log
+zsh.sh
+
+*otf
+*rtf

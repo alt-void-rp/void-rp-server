@@ -1,0 +1,53 @@
+body {
+    overflow: hidden;
+    background-color: rgba(240, 248, 255, 0);
+}
+
+
+.phonebox {
+    position: absolute;
+    right: 0;
+    width: 393px;
+    height: 852px;
+    margin: 10px;
+    transition: all 0.5s;
+    display: none;
+    border-radius: 15px;
+    background-color: rgba(240, 248, 255, 0);
+
+
+}
+
+.image {
+    background-image: url('../img/background.JPG');
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    background-color: rgba(240, 248, 255, 0);
+
+}
+
+.timetext {
+    font-family: 'SF-Pro-Display-Semibold', serif;
+    font-size: 17px;
+}
+
+.timeblock {
+    margin-top: 43px;
+    cursor: none;
+    user-select: none;
+}
+
+.timeblock:hover {
+    cursor: none;
+    user-select: none;
+}
+
+@font-face {
+    font-family: 'SF-Pro-Display-Semibold';
+    src: url('../fonts/SanFranciscoProDisplay/SF-Pro-Display-Semibold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,18 @@
+name = 'NovochikagoRP'
+host = '0.0.0.0'
+port = 7788
+players = 128
+announce = false
+language = 'en'
+modules = ['js-module', 'js-bytecode-module']
+resources = [
+    'shared-variables',
+    'auth',
+    'chat',
+    'freeroam',
+    'phone',
+    'systemctl',
+    'reconnect',
+    'call-app',
+]
+debug = true
