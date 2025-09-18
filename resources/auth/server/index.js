@@ -11,6 +11,9 @@ function successAuthUser(player, result) {
     alt.emitClient(player, 'auth:successAuthUser', result);
 };
 
+function failAuthUser(player, result) {
+    alt.emitClient(player, 'auth:failAuthUser', result);
+};
 
 function loginUser(player, jsonData) {
     let data = JSON.parse(jsonData);
@@ -18,12 +21,9 @@ function loginUser(player, jsonData) {
 
     let result = validUserAuth(data);
 
-    if (result["success"] == true) {
-        successAuthUser(player, result);
-    }
+    if (result["success"] == true) successAuthUser(player, result);
 
-    alt.log(result);
-    alt.log(data);
+    if (result["success"] == false && result["reason"] == 'password-login-novalid') failAuthUser(player, result);
 }
 
 

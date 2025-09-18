@@ -1,8 +1,8 @@
 
 const USER_LOGIN_EXAMPLE =
 {
-    "username": 'mironoouv',
-    "password": 'miron',
+    "username": 'admin',
+    "password": 'admin',
     "id": ''
 }
 
@@ -12,7 +12,10 @@ const USER_DATA_MODEL =
     "username": 'mironoouv',
     "password": 'miron',
 
+    "socialID": '',
+
 }
+
 
 export function validUserAuth(data) {
     let result = {};
@@ -21,11 +24,10 @@ export function validUserAuth(data) {
     userAuth = (data['username'] == USER_LOGIN_EXAMPLE['username'] &&
         data['password'] == USER_LOGIN_EXAMPLE['password']);
 
-
     if (!userAuth) {
         result["success"] = false;
         result["reason"] = 'password-login-novalid';
-        result["message"] = 'Вы пытаетесь войти с другого ip адреса.';
+        result["message"] = 'Неправильный логин или пароль.';
     };
 
     if (userAuth) {
