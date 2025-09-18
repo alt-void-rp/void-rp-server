@@ -1,5 +1,6 @@
 import * as alt from "alt-server";
 
+
 alt.log('Resource [Phone] started');
 
 alt.onClient('phone:upArrowPressed', () => {

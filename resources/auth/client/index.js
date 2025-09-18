@@ -1,21 +1,34 @@
 import * as alt from "alt-client";
 import * as shared_variables from 'alt:shared-variables'
 
+const view = new alt.WebView(`${shared_variables.FRONTEND_URL}/auth`);
 
-const view = new alt.WebView("http://resource/client/html/index.html");
-
-if (view.isReady && !shared_variables.userIsAuth()) {
+if (!shared_variables.userIsAuth()) {
     alt.toggleGameControls(false);
-    view.focus();
     alt.showCursor(true);
+    view.focus();
 }
+
+function successAuthUser({ success }) {
+    if (!success) return;
+
+    view.unfocus();
+    alt.toggleGameControls(true);
+    alt.showCursor(false);
+    view.isVisible = false;
+}
+
 
 alt.on('playerConnect', (player) => {
 
-    alt.logDebug(player.name);
-
 });
 
-view.on('auth:loginUser', (jsonData) => alt.emitServer('auth:loginUser', jsonData));
 
+view.on('auth:loginUser', (jsonData) => {
+
+    alt.emitServer('auth:loginUser', jsonData);
+});
+
+
+alt.onServer('auth:successAuthUser', successAuthUser);
 alt.log(`Resource [auth] started`);
