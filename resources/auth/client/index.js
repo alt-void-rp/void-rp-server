@@ -9,10 +9,6 @@ if (!shared_variables.userIsAuth()) {
     view.focus();
 }
 
-/**
- * @param {object} data - The data returned from the server.
- * @returns {void}
- */
 function successAuthUser(data) {
     if (!data["success"]) return;
 
@@ -26,25 +22,28 @@ function failAuthUser(data) {
     view.emit("auth:failAuthUser", data);
 }
 
-/** 
- * @param {alt.IPlayer} player - The player that connected.
- */
-alt.on('playerConnect', (player) => {
-});
+//
+
+function successResetPasswordUser(data) {
+    if (!data["success"]) return;
+    view.emit("auth:successResetPasswordUserUser", data);
+}
+
+function failResetPasswordUserUser(data) {
+    view.emit("auth:failResetPasswordUserUser", data);
+}
+
+//
 
 
-/**
- * @param {string} jsonData 
- */
-view.on('auth:loginUser', (jsonData) => {
-    alt.emitServer('auth:loginUser', jsonData);
-});
+view.on('auth:loginUser', (jsonData) => alt.emitServer('auth:loginUser', jsonData));
+view.on('auth:resetPasswordUser', (jsonData) => alt.emitServer('auth:resetPasswordUser', jsonData));
 
-
-/**
- * @param {object} data - The data returned from the server.
- */
+// auth
 alt.onServer('auth:successAuthUser', successAuthUser);
 alt.onServer('auth:failAuthUser', failAuthUser);
+// reset password for email
+alt.onServer('auth:successResetPasswordUserUser', successResetPasswordUser);
+alt.onServer('auth:failResetPasswordUserUser', failResetPasswordUserUser);
 
 alt.log(`Resource [auth] started`);
